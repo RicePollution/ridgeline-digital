@@ -83,9 +83,21 @@
         <p>I'm a web designer based in the Denver metro area, and I build sites one at a time. Every project gets my full attention from the first conversation to launch day.</p>
         <p>I work with contractors, shops, service businesses, and local brands across Colorado. If you've been putting off getting a real website — or you've got one that embarrasses you — let's fix that.</p>
       </div>
-      <div class="about__quote reveal reveal--delay-2">
-        <p>I build one site at a time, so yours gets my full attention.</p>
-        <cite>— Ridgeline Digital</cite>
+      <div class="about__visual">
+        <div class="laptop" id="laptop">
+          <div class="laptop__lid">
+            <div class="laptop__screen">
+              <div class="laptop__screen-inner">
+                <span class="laptop__screen-line">ridgeline.digital</span>
+                <span class="laptop__screen-line">colorado-built</span>
+                <span class="laptop__screen-line">mobile-first</span>
+                <span class="laptop__cursor"></span>
+              </div>
+            </div>
+          </div>
+          <div class="laptop__base"></div>
+          <div class="laptop__shadow"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -241,6 +253,20 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Laptop entrance — separate observer so it fires independently
+  const laptopEl = document.getElementById('laptop');
+  if (laptopEl) {
+    const laptopObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          laptopEl.classList.add('is-visible');
+          laptopObserver.unobserve(laptopEl);
+        }
+      });
+    }, { threshold: 0.25 });
+    laptopObserver.observe(laptopEl);
+  }
 </script>
 </body>
 </html>

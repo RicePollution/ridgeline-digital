@@ -269,33 +269,147 @@ body::after {
   font-size: 1.04rem; color: var(--muted-light);
   line-height: 1.82; margin-bottom: 18px;
 }
-.about__quote {
-  background: var(--bg);
-  padding: 52px 48px;
-  border-radius: 2px;
-  position: relative; overflow: hidden;
+/* ─── LAPTOP 3D ─── */
+.about__visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 700px;
+  perspective-origin: 50% 45%;
+  padding: 40px 0;
 }
-.about__quote::before {
-  content: '\201C';
-  position: absolute; top: 16px; left: 36px;
-  font-family: var(--font-display);
-  font-size: 8rem; font-weight: 800;
-  color: var(--accent); line-height: 1; opacity: 0.12;
+
+.laptop {
+  position: relative;
+  transform-style: preserve-3d;
+  width: 240px;
+  opacity: 0;
+}
+
+@keyframes laptopRise {
+  0%   { opacity: 0; transform: translateY(80px) rotateY(44deg); }
+  55%  { opacity: 1; transform: translateY(-10px) rotateY(-14deg); }
+  100% { opacity: 1; transform: translateY(0) rotateY(-8deg); }
+}
+
+.laptop.is-visible {
+  animation: laptopRise 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.laptop__lid {
+  width: 240px;
+  height: 154px;
+  background: linear-gradient(160deg, #232323, #191919);
+  border: 1px solid #333;
+  border-bottom: none;
+  border-radius: 10px 10px 2px 2px;
+  transform-origin: bottom center;
+  transform: rotateX(-92deg);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+@keyframes lidOpen {
+  0%, 30% { transform: rotateX(-92deg); }
+  100%    { transform: rotateX(-26deg); }
+}
+
+.laptop.is-visible .laptop__lid {
+  animation: lidOpen 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.25s forwards;
+}
+
+.laptop__screen {
+  position: absolute;
+  inset: 10px 14px 8px;
+  background: #060606;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.laptop__screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 35% 30%, rgba(61,214,140,0.18) 0%, transparent 65%);
   pointer-events: none;
 }
-.about__quote p {
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.5vw, 1.55rem);
-  font-weight: 700; color: #fff;
-  line-height: 1.45; letter-spacing: -0.02em;
-  position: relative; z-index: 1;
+
+.laptop__screen-inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 16px 18px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  color: var(--accent);
+  line-height: 2;
+  opacity: 0;
+  transition: opacity 0.6s ease 1.6s;
 }
-.about__quote cite {
-  display: block; margin-top: 24px;
-  font-size: 0.72rem; font-style: normal;
-  font-weight: 600; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--muted-dark);
-  position: relative; z-index: 1;
+
+.laptop.is-visible .laptop__screen-inner {
+  opacity: 1;
+}
+
+.laptop__screen-line { display: block; }
+.laptop__screen-line::before { content: '> '; opacity: 0.5; }
+
+.laptop__cursor {
+  display: inline-block;
+  width: 6px; height: 11px;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.laptop__base {
+  width: 240px;
+  height: 14px;
+  background: linear-gradient(to bottom, #2a2a2a, #1d1d1d);
+  border: 1px solid #333;
+  border-top: 1px solid #3a3a3a;
+  border-radius: 0 0 8px 8px;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.6), 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.laptop__base::before {
+  content: '';
+  position: absolute;
+  top: 3px; left: 18px; right: 18px; height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    #2e2e2e 0px, #2e2e2e 14px,
+    #222 14px, #222 16px
+  );
+  border-radius: 1px;
+  opacity: 0.7;
+}
+
+.laptop__base::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; left: 50%; transform: translateX(-50%);
+  width: 44px; height: 5px;
+  background: #232323;
+  border-radius: 2px;
+  border: 1px solid #333;
+}
+
+.laptop__shadow {
+  width: 200px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.45) 0%, transparent 70%);
+  margin: 0 auto;
+  margin-top: 4px;
 }
 
 /* ─── SERVICES LIST ─── */
