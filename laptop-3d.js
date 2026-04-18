@@ -41,7 +41,7 @@ import * as THREE from 'three';
     // ── Camera ────────────────────────────────────────────────
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
     camera.position.set(0, 1.5, 3.5);
-    camera.lookAt(0, 0, 0);
+    camera.lookAt(0, 0.5, 0);
 
     // Ease out cubic
     function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
@@ -168,7 +168,7 @@ import * as THREE from 'three';
 
     // Start hidden — entrance animates these in
     canvas.style.opacity = '0';
-    laptopGroup.position.y = -1.2; // below rest
+    laptopGroup.position.y = -1.8; // below rest (-0.6 rest offset + 1.2 entrance drop)
     laptopGroup.rotation.y = THREE.MathUtils.degToRad(35); // start spun right
 
     // ── Entrance trigger ──────────────────────────────────────
@@ -233,8 +233,8 @@ import * as THREE from 'three';
         entranceProgress = Math.min(elapsed / ENTRANCE_DURATION, 1);
         const e = easeOut(entranceProgress);
 
-        // Rise: from -1.2 to 0
-        laptopGroup.position.y = -1.2 + 1.2 * e;
+        // Rise: from -1.8 to -0.6 (group rests at -0.6 to keep lid inside canvas)
+        laptopGroup.position.y = -1.8 + 1.2 * e;
 
         // Fade in via canvas opacity
         canvas.style.opacity = String(e);
@@ -246,7 +246,7 @@ import * as THREE from 'three';
 
         if (entranceProgress >= 1) {
           entranceDone = true;
-          laptopGroup.position.y = 0;
+          laptopGroup.position.y = -0.6;
           laptopGroup.rotation.y = REST_Y;
           canvas.style.opacity = '1';
         }
