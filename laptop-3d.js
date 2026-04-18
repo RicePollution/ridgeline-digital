@@ -40,7 +40,7 @@ import * as THREE from 'three';
 
     // ── Camera ────────────────────────────────────────────────
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.set(0, 1.5, 5);
+    camera.position.set(0, 1.5, 3.5);
     camera.lookAt(0, 0, 0);
 
     // Ease out cubic
@@ -216,7 +216,7 @@ import * as THREE from 'three';
       if (canvas.width !== w || canvas.height !== h) {
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
-        camera.position.z = w < 500 ? 6.5 : 5;
+        camera.position.z = w < 500 ? 5 : 3.5;
         camera.updateProjectionMatrix();
       }
     }
