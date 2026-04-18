@@ -170,6 +170,25 @@ const entranceObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 entranceObserver.observe(canvas);
 
+// ── Mouse follow ──────────────────────────────────────────
+const aboutVisual = canvas.closest('.about__visual') || canvas.parentElement;
+
+aboutVisual.addEventListener('mousemove', (e) => {
+  if (!entranceDone) return;
+  const rect = aboutVisual.getBoundingClientRect();
+  // Normalize to -1 → +1
+  const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+  const ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;
+  // Map to rotation ranges
+  targetRotY = REST_Y + nx * THREE.MathUtils.degToRad(15);
+  targetRotX = -ny * THREE.MathUtils.degToRad(12);
+});
+
+aboutVisual.addEventListener('mouseleave', () => {
+  targetRotY = REST_Y;
+  targetRotX = REST_X;
+});
+
 // ── Resize handling ───────────────────────────────────────
 function resizeRenderer() {
   const w = canvas.clientWidth;
@@ -209,6 +228,12 @@ function animate() {
       laptopGroup.rotation.y = REST_Y;
       canvas.style.opacity = '1';
     }
+  }
+
+  // Mouse-follow lerp (only after entrance done)
+  if (entranceDone) {
+    laptopGroup.rotation.y += (targetRotY - laptopGroup.rotation.y) * 0.08;
+    laptopGroup.rotation.x += (targetRotX - laptopGroup.rotation.x) * 0.08;
   }
 
   // Blink cursor at ~1Hz
