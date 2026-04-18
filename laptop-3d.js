@@ -40,7 +40,7 @@ import * as THREE from 'three';
 
     // ── Camera ────────────────────────────────────────────────
     const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
-    camera.position.set(0, 0.3, 5);
+    camera.position.set(0, 1.5, 5);
     camera.lookAt(0, 0, 0);
 
     // Ease out cubic
@@ -139,8 +139,9 @@ import * as THREE from 'three';
       screen.position.set(0, 0.9, 0.052);
       lidPivot.add(screen);
 
-      // Open the lid ~115 degrees (negative X rotation tilts top toward viewer)
-      lidPivot.rotation.x = -THREE.MathUtils.degToRad(115);
+      // Open the lid ~110 degrees from closed.
+      // Closed = +90deg (lid horizontal over keyboard). 110deg open = +90 - 110 = -20deg.
+      lidPivot.rotation.x = -THREE.MathUtils.degToRad(20);
 
       return { group, screenTex, screenCanvas };
     }
