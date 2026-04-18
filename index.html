@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.163.0/build/three.module.js"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -84,24 +91,7 @@
         <p>I work with contractors, shops, service businesses, and local brands across Colorado. If you've been putting off getting a real website — or you've got one that embarrasses you — let's fix that.</p>
       </div>
       <div class="about__visual">
-        <!-- laptop-scene handles opacity + rise (separate from preserve-3d element) -->
-        <div class="laptop-scene" id="laptop">
-          <!-- laptop handles Y-spin only — no opacity, so preserve-3d stays intact -->
-          <div class="laptop">
-            <div class="laptop__lid">
-              <div class="laptop__screen">
-                <div class="laptop__screen-inner">
-                  <span class="laptop__screen-line">ridgeline.digital</span>
-                  <span class="laptop__screen-line">colorado-built</span>
-                  <span class="laptop__screen-line">mobile-first</span>
-                  <span class="laptop__cursor"></span>
-                </div>
-              </div>
-            </div>
-            <div class="laptop__base"></div>
-            <div class="laptop__shadow"></div>
-          </div>
-        </div>
+        <canvas id="laptop-canvas"></canvas>
       </div>
     </div>
   </div>
@@ -272,5 +262,6 @@
     laptopObserver.observe(laptopScene);
   }
 </script>
+<script type="module" src="laptop-3d.js"></script>
 </body>
 </html>
