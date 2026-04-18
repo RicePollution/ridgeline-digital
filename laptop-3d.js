@@ -8,6 +8,19 @@ if (!canvas) throw new Error('laptop-canvas not found');
 let cursorOn = true;
 let lastBlink = 0;
 
+// Entrance animation state
+let entranceTriggered = false;
+let entranceDone = false;
+let entranceProgress = 0; // 0 → 1
+const ENTRANCE_DURATION = 900; // ms
+let entranceStart = 0;
+
+// Target rotation for mouse follow (set after entrance)
+let targetRotY = THREE.MathUtils.degToRad(-10);
+let targetRotX = 0;
+const REST_Y = THREE.MathUtils.degToRad(-10);
+const REST_X = 0;
+
 // ── Renderer ──────────────────────────────────────────────
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -19,6 +32,14 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 camera.position.set(0, 0.3, 5);
 camera.lookAt(0, 0, 0);
+
+// Ease out cubic
+function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+
+// Spring overshoot: overshoots slightly then settles
+function springY(t) {
+  return 1 + Math.sin(t * Math.PI * 1.2) * Math.exp(-t * 4) * 0.15;
+}
 
 // ── Screen texture ────────────────────────────────────────
 function buildScreenTexture() {
@@ -132,6 +153,23 @@ const screenLight = new THREE.PointLight(0x3dd68c, 0.6, 10);
 screenLight.position.set(0, 1, 3);
 scene.add(screenLight);
 
+// Start hidden — entrance animates these in
+canvas.style.opacity = '0';
+laptopGroup.position.y = -1.2; // below rest
+laptopGroup.rotation.y = THREE.MathUtils.degToRad(35); // start spun right
+
+// ── Entrance trigger ──────────────────────────────────────
+const entranceObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entranceTriggered) {
+      entranceTriggered = true;
+      entranceStart = performance.now();
+      entranceObserver.unobserve(canvas);
+    }
+  });
+}, { threshold: 0.1 });
+entranceObserver.observe(canvas);
+
 // ── Resize handling ───────────────────────────────────────
 function resizeRenderer() {
   const w = canvas.clientWidth;
@@ -147,6 +185,31 @@ function resizeRenderer() {
 function animate() {
   requestAnimationFrame(animate);
   resizeRenderer();
+
+  // Entrance animation
+  if (entranceTriggered && !entranceDone) {
+    const elapsed = performance.now() - entranceStart;
+    entranceProgress = Math.min(elapsed / ENTRANCE_DURATION, 1);
+    const e = easeOut(entranceProgress);
+
+    // Rise: from -1.2 to 0
+    laptopGroup.position.y = -1.2 + 1.2 * e;
+
+    // Fade in via canvas opacity
+    canvas.style.opacity = String(e);
+
+    // Spin: from +35° to -10° with spring overshoot
+    const fromY = THREE.MathUtils.degToRad(35);
+    const toY = REST_Y;
+    laptopGroup.rotation.y = fromY + (toY - fromY) * springY(entranceProgress);
+
+    if (entranceProgress >= 1) {
+      entranceDone = true;
+      laptopGroup.position.y = 0;
+      laptopGroup.rotation.y = REST_Y;
+      canvas.style.opacity = '1';
+    }
+  }
 
   // Blink cursor at ~1Hz
   const now = performance.now();
