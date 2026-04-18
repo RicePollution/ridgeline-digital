@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ridgeline Digital — Colorado Web Design</title>
   <meta name="description" content="Hand-built websites for Colorado small businesses. Professional, mobile-first, and built to convert.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -22,117 +25,147 @@
 </nav>
 
 <!-- HERO -->
-<section class="section section--dark" style="padding: 120px 0 100px;">
-  <div class="container">
-    <p class="section__label">Colorado Web Design</p>
-    <h1 style="font-size: clamp(2.6rem, 6vw, 4.2rem); font-weight: 800; line-height: 1.08; letter-spacing: -0.03em; max-width: 800px; margin-bottom: 24px; color: #fff;">
-      Colorado Businesses Deserve a Website That Actually Works.
+<section class="hero">
+  <div class="hero__glow"></div>
+  <div class="hero__glow-2"></div>
+  <div class="container hero__content">
+    <span class="hero__line"></span>
+    <p class="hero__eyebrow">Colorado Web Design <em>·</em> Denver Metro &amp; Beyond</p>
+    <h1 class="hero__headline">
+      Colorado<br>
+      Businesses<br>
+      Deserve a<br>
+      Website That<br>
+      <em>Actually</em> Works.
     </h1>
-    <p style="font-size: 1.15rem; color: var(--text-muted); max-width: 520px; margin-bottom: 40px; line-height: 1.7;">
-      Hand-built, mobile-first websites for local businesses across the Denver metro and beyond — no templates, no agency overhead, no surprises.
-    </p>
-    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-      <a href="contact.html" class="btn btn--primary">Get in Touch</a>
-      <a href="services.html" class="btn btn--outline">See What We Do</a>
+    <div class="hero__bottom">
+      <p class="hero__sub">
+        Hand-built, mobile-first websites for local businesses — no templates, no agency overhead, no surprises.
+      </p>
+      <div class="hero__ctas">
+        <a href="contact.html" class="btn btn--primary">Get in Touch</a>
+        <a href="services.html" class="btn btn--outline">See What We Do</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CREDENTIALS STRIP -->
-<div class="strip">
-  <div class="strip__inner">
-    <span class="strip__item">Colorado-Based</span>
-    <span class="strip__item">Built by Hand</span>
-    <span class="strip__item">Mobile-First</span>
-    <span class="strip__item">Ongoing Support</span>
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee__track">
+    <span class="marquee__item">Colorado-Based</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">Built by Hand</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">Mobile-First</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">Ongoing Support</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">No Templates</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">No Lock-In</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">SEO Ready</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">Fast &amp; Responsive</span><span class="marquee__dot">◆</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee__item">Colorado-Based</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">Built by Hand</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">Mobile-First</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">Ongoing Support</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">No Templates</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">No Lock-In</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">SEO Ready</span><span class="marquee__dot">◆</span>
+    <span class="marquee__item">Fast &amp; Responsive</span><span class="marquee__dot">◆</span>
   </div>
 </div>
 
-<!-- ABOUT SPLIT -->
+<!-- ABOUT -->
 <section class="section section--light">
-  <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
-    <div>
-      <p class="section__label">About</p>
-      <h2 class="section__heading" style="color: var(--text-light);">You work with me directly. No handoffs.</h2>
-      <p style="font-size: 1.05rem; color: #444; line-height: 1.8; margin-bottom: 16px;">
-        I'm a web designer based in the Denver metro area, and I build sites one at a time. Every project gets my full attention from the first conversation to launch day.
-      </p>
-      <p style="font-size: 1.05rem; color: #444; line-height: 1.8;">
-        I work with contractors, shops, service businesses, and local brands across Colorado. If you've been putting off getting a real website — or you've got one that embarrasses you — let's fix that.
-      </p>
-    </div>
-    <div style="background: var(--bg-dark); border-radius: 16px; padding: 48px 40px;">
-      <p style="font-size: clamp(1.3rem, 3vw, 1.75rem); font-weight: 700; color: #fff; line-height: 1.4; letter-spacing: -0.02em;">
-        "I build one site at a time, so yours gets my full attention."
-      </p>
-      <p style="margin-top: 20px; font-size: 0.88rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;">— Ridgeline Digital</p>
+  <div class="container">
+    <div class="about-grid">
+      <div class="about__copy">
+        <p class="section__eyebrow">About</p>
+        <h2 class="section__heading" style="margin-bottom: 36px;">You work with me<br>directly. No handoffs.</h2>
+        <p>I'm a web designer based in the Denver metro area, and I build sites one at a time. Every project gets my full attention from the first conversation to launch day.</p>
+        <p>I work with contractors, shops, service businesses, and local brands across Colorado. If you've been putting off getting a real website — or you've got one that embarrasses you — let's fix that.</p>
+      </div>
+      <div class="about__quote">
+        <p>I build one site at a time, so yours gets my full attention.</p>
+        <cite>— Ridgeline Digital</cite>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- WHAT YOU GET -->
+<!-- SERVICES -->
 <section class="section section--dark">
   <div class="container">
-    <p class="section__label">Services</p>
+    <p class="section__eyebrow">Services</p>
     <h2 class="section__heading">What you get.</h2>
-    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
-      <div class="card">
-        <div class="card__title">Custom Website</div>
-        <p class="card__body">A hand-built, mobile-first site designed around your business. Not a template. Not a page builder. Something that actually looks like yours.</p>
-        <a href="services.html" style="display: inline-block; margin-top: 20px; font-size: 0.88rem; font-weight: 600; color: var(--accent);">Learn more →</a>
+    <div class="services-list">
+      <a href="services.html" class="service-item">
+        <span class="service-item__num">01</span>
+        <div>
+          <div class="service-item__title">Custom Website</div>
+          <p class="service-item__desc">A hand-built, mobile-first site designed around your business. Not a template. Not a page builder. Something that actually looks like yours.</p>
+        </div>
+        <span class="service-item__arrow">↗</span>
+      </a>
+      <a href="services.html" class="service-item">
+        <span class="service-item__num">02</span>
+        <div>
+          <div class="service-item__title">SEO Foundation</div>
+          <p class="service-item__desc">Your site is set up so Google can actually find you — clean code, proper titles, local business schema, and Google Search Console connected from day one.</p>
+        </div>
+        <span class="service-item__arrow">↗</span>
+      </a>
+      <a href="services.html" class="service-item">
+        <span class="service-item__num">03</span>
+        <div>
+          <div class="service-item__title">Monthly Care Plan</div>
+          <p class="service-item__desc">Keep your site current without lifting a finger. Updates, uptime monitoring, small edits, and priority support on a simple monthly plan.</p>
+        </div>
+        <span class="service-item__arrow">↗</span>
+      </a>
+      <a href="services.html" class="service-item">
+        <span class="service-item__num">04</span>
+        <div>
+          <div class="service-item__title">Google Business Setup</div>
+          <p class="service-item__desc">Your Google Business Profile is often the first thing customers see. I'll set it up correctly — hours, photos, categories, and linked to your new site.</p>
+        </div>
+        <span class="service-item__arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section section--light">
+  <div class="container">
+    <p class="section__eyebrow">Process</p>
+    <h2 class="section__heading">How it works.</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-step__num">01</div>
+        <div class="process-step__title">We Talk</div>
+        <p class="process-step__body">Tell me about your business, your customers, and what you need. No forms, no sales call — just a real conversation.</p>
       </div>
-      <div class="card">
-        <div class="card__title">SEO Foundation</div>
-        <p class="card__body">Your site is set up so Google can actually find you — clean code, proper titles, local business schema, and Google Search Console connected from day one.</p>
-        <a href="services.html" style="display: inline-block; margin-top: 20px; font-size: 0.88rem; font-weight: 600; color: var(--accent);">Learn more →</a>
+      <div class="process-step">
+        <div class="process-step__num">02</div>
+        <div class="process-step__title">We Build</div>
+        <p class="process-step__body">I design and build your site with your input along the way. You see it before it goes live. No surprises.</p>
       </div>
-      <div class="card">
-        <div class="card__title">Monthly Care Plan</div>
-        <p class="card__body">Keep your site current without lifting a finger. Updates, uptime monitoring, small edits, and priority support on a simple monthly plan.</p>
-        <a href="services.html" style="display: inline-block; margin-top: 20px; font-size: 0.88rem; font-weight: 600; color: var(--accent);">Learn more →</a>
-      </div>
-      <div class="card">
-        <div class="card__title">Google Business Setup</div>
-        <p class="card__body">Your Google Business Profile is often the first thing customers see. I'll set it up correctly — hours, photos, categories, and linked to your new site.</p>
-        <a href="services.html" style="display: inline-block; margin-top: 20px; font-size: 0.88rem; font-weight: 600; color: var(--accent);">Learn more →</a>
+      <div class="process-step">
+        <div class="process-step__num">03</div>
+        <div class="process-step__title">You Launch</div>
+        <p class="process-step__body">Your site goes live. I handle the technical side — hosting, domain, search console. You just start getting customers.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="section section--light">
+<!-- ARTICLES -->
+<section class="section section--light" style="padding-top: 0;">
   <div class="container">
-    <p class="section__label">Process</p>
-    <h2 class="section__heading" style="color: var(--text-light);">How it works.</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step__number">01</div>
-        <div class="step__title">We Talk</div>
-        <p class="step__body">Tell me about your business, your customers, and what you need. No forms, no sales call — just a real conversation.</p>
-      </div>
-      <div class="step">
-        <div class="step__number">02</div>
-        <div class="step__title">We Build</div>
-        <p class="step__body">I design and build your site with your input along the way. You see it before it goes live. No surprises.</p>
-      </div>
-      <div class="step">
-        <div class="step__number">03</div>
-        <div class="step__title">You Launch</div>
-        <p class="step__body">Your site goes live. I handle the technical side — hosting setup, domain connection, search console. You just start getting customers.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ARTICLES TEASER -->
-<section class="section section--light">
-  <div class="container">
-    <p class="section__label">For Business Owners</p>
-    <h2 class="section__heading" style="color: var(--text-light);">Worth reading before you decide anything.</h2>
-    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 40px;">
-      <a href="articles/your-website-is-your-hardest-working-employee.html" style="text-decoration:none;">
-        <div class="article-card article-card--light">
+    <p class="section__eyebrow">For Business Owners</p>
+    <h2 class="section__heading">Worth reading before<br>you decide anything.</h2>
+    <div class="articles-grid">
+      <a href="articles/your-website-is-your-hardest-working-employee.html">
+        <div class="article-card">
           <img class="article-card__img" src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=700&q=80" alt="Person working on a laptop">
           <div class="article-card__content">
             <div class="article-card__tag">For Business Owners</div>
@@ -142,8 +175,8 @@
           </div>
         </div>
       </a>
-      <a href="articles/5-signs-your-website-is-turning-customers-away.html" style="text-decoration:none;">
-        <div class="article-card article-card--light">
+      <a href="articles/5-signs-your-website-is-turning-customers-away.html">
+        <div class="article-card">
           <img class="article-card__img" src="https://images.unsplash.com/photo-1555421689-491a97ff2040?w=700&q=80" alt="Person looking at a website on their phone">
           <div class="article-card__content">
             <div class="article-card__tag">Quick Checklist</div>
@@ -153,19 +186,19 @@
           </div>
         </div>
       </a>
-      <a href="articles/what-seo-actually-means-for-a-small-business.html" style="text-decoration:none;">
-        <div class="article-card article-card--light">
-          <img class="article-card__img" src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=700&q=80" alt="Search and analytics on a screen">
+      <a href="articles/what-seo-actually-means-for-a-small-business.html">
+        <div class="article-card">
+          <img class="article-card__img" src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=700&q=80" alt="Search and analytics">
           <div class="article-card__content">
             <div class="article-card__tag">Demystified</div>
             <div class="article-card__title">What "SEO" Actually Means for a Small Business</div>
-            <p class="article-card__desc">You've been sold a lot of nonsense about SEO. Here's what it actually means if you run a local business in Colorado.</p>
+            <p class="article-card__desc">You've been sold a lot of nonsense about SEO. Here's what it actually means for a local business in Colorado.</p>
             <span class="article-card__link">Read Article →</span>
           </div>
         </div>
       </a>
-      <a href="articles/do-you-need-a-website-if-youre-already-on-facebook.html" style="text-decoration:none;">
-        <div class="article-card article-card--light">
+      <a href="articles/do-you-need-a-website-if-youre-already-on-facebook.html">
+        <div class="article-card">
           <img class="article-card__img" src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&q=80" alt="Social media on a phone">
           <div class="article-card__content">
             <div class="article-card__tag">Good Question</div>
@@ -179,12 +212,12 @@
   </div>
 </section>
 
-<!-- FOOTER CTA -->
-<div style="background: var(--bg-dark); border-top: 1px solid #2a2a2a; padding: 88px 24px; text-align: center;">
-  <p style="font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; color: #fff; max-width: 640px; margin: 0 auto 28px; line-height: 1.2; letter-spacing: -0.02em;">
-    Ready to stop losing customers to competitors with better websites?
+<!-- CTA -->
+<div class="cta-section">
+  <p class="cta-section__heading">
+    Ready to stop losing customers to competitors with <em>better websites</em>?
   </p>
-  <a href="contact.html" class="btn btn--primary" style="font-size: 1rem;">Let's Talk</a>
+  <a href="contact.html" class="btn btn--primary" style="font-size: 0.95rem; padding: 14px 32px;">Let's Talk</a>
 </div>
 <footer class="footer">
   <div class="footer__inner">
