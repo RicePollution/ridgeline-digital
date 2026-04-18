@@ -212,6 +212,7 @@ import * as THREE from 'three';
       if (canvas.width !== w || canvas.height !== h) {
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
+        camera.position.z = w < 500 ? 6.5 : 5;
         camera.updateProjectionMatrix();
       }
     }
