@@ -4,6 +4,10 @@ import * as THREE from 'three';
 const canvas = document.getElementById('laptop-canvas');
 if (!canvas) throw new Error('laptop-canvas not found');
 
+// Cursor blink state
+let cursorOn = true;
+let lastBlink = 0;
+
 // ── Renderer ──────────────────────────────────────────────
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -16,16 +20,46 @@ const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
 camera.position.set(0, 0.3, 5);
 camera.lookAt(0, 0, 0);
 
-// ── Screen texture placeholder ────────────────────────────
+// ── Screen texture ────────────────────────────────────────
 function buildScreenTexture() {
-  const size = 512;
+  const W = 512, H = 512;
   const cvs = document.createElement('canvas');
-  cvs.width = size;
-  cvs.height = size;
+  cvs.width = W;
+  cvs.height = H;
   const ctx = cvs.getContext('2d');
-  ctx.fillStyle = '#060606';
-  ctx.fillRect(0, 0, size, size);
-  return { canvas: cvs, ctx };
+
+  function drawScreen(cursorOn) {
+    // Background with radial green glow
+    ctx.fillStyle = '#060606';
+    ctx.fillRect(0, 0, W, H);
+    const grad = ctx.createRadialGradient(W * 0.35, H * 0.3, 0, W * 0.35, H * 0.3, W * 0.65);
+    grad.addColorStop(0, 'rgba(61,214,140,0.15)');
+    grad.addColorStop(1, 'transparent');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, W, H);
+
+    // Terminal text
+    ctx.font = '500 26px "Courier New", monospace';
+    const lines = ['> ridgeline.digital', '> colorado-built', '> mobile-first'];
+    const lineH = 46;
+    const startY = 180;
+    lines.forEach((line, i) => {
+      // dim the prompt ">" separately
+      ctx.fillStyle = 'rgba(61,214,140,0.4)';
+      ctx.fillText('>', 60, startY + i * lineH);
+      ctx.fillStyle = '#3dd68c';
+      ctx.fillText(line.slice(1), 60 + 18, startY + i * lineH);
+    });
+
+    // Blinking cursor block
+    if (cursorOn) {
+      ctx.fillStyle = '#3dd68c';
+      ctx.fillRect(60, startY + lines.length * lineH - 30, 14, 26);
+    }
+  }
+
+  drawScreen(true);
+  return { canvas: cvs, ctx, drawScreen };
 }
 
 // ── Laptop geometry ───────────────────────────────────────
@@ -113,6 +147,16 @@ function resizeRenderer() {
 function animate() {
   requestAnimationFrame(animate);
   resizeRenderer();
+
+  // Blink cursor at ~1Hz
+  const now = performance.now();
+  if (now - lastBlink > 500) {
+    cursorOn = !cursorOn;
+    lastBlink = now;
+    screenCanvas.drawScreen(cursorOn);
+    screenTex.needsUpdate = true;
+  }
+
   renderer.render(scene, camera);
 }
 animate();
