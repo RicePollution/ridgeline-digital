@@ -247,20 +247,6 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Laptop entrance — fires on laptop-scene wrapper
-  const laptopScene = document.getElementById('laptop');
-  if (laptopScene) {
-    const laptopObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          laptopScene.classList.add('is-visible');
-          laptopObserver.unobserve(laptopScene);
-        }
-      });
-    }, { threshold: 0.1 });
-    laptopObserver.observe(laptopScene);
-  }
 </script>
 <script type="module" src="laptop-3d.js"></script>
 </body>
