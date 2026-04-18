@@ -6,8 +6,9 @@ import * as THREE from 'three';
     const canvas = document.getElementById('laptop-canvas');
     if (!canvas) return;
 
-    // WebGL availability check
-    const testCtx = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+    // WebGL availability check — probe a throwaway canvas to avoid context conflicts
+    const probe = document.createElement('canvas');
+    const testCtx = probe.getContext('webgl') || probe.getContext('experimental-webgl');
     if (!testCtx) {
       canvas.style.display = 'none';
       return;
@@ -45,9 +46,11 @@ import * as THREE from 'three';
     // Ease out cubic
     function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
 
-    // Spring overshoot: overshoots slightly then settles
+    // Spring overshoot: easeOutElastic — overshoots past 1.0 then settles back to 1
     function springY(t) {
-      return t + Math.sin(t * Math.PI * 1.2) * Math.exp(-t * 4) * 0.15;
+      if (t >= 1) return 1;
+      const c4 = (2 * Math.PI) / 3;
+      return Math.pow(2, -8 * t) * Math.sin((t * 10 - 0.75) * c4) + 1;
     }
 
     // ── Screen texture ────────────────────────────────────────
