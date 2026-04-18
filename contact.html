@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Ridgeline Digital</title>
+  <meta name="description" content="Get in touch with Ridgeline Digital. Colorado web design for small businesses.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .contact-form { max-width: 560px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+    .form-group label { font-size: 0.85rem; font-weight: 600; color: #555; letter-spacing: 0.03em; }
+    .form-group input, .form-group textarea {
+      padding: 12px 14px; border: 1.5px solid #ddd; border-radius: 8px;
+      font-family: var(--font); font-size: 0.97rem; color: var(--text-light);
+      background: #fff; transition: border-color 0.15s; outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav__inner">
+    <a href="index.html" class="nav__logo">Ridgeline<span>.</span></a>
+    <div class="nav__links">
+      <a href="services.html">Services</a>
+      <a href="articles/index.html">Articles</a>
+      <a href="contact.html" class="nav__cta">Get in Touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="section section--dark" style="padding: 80px 0 64px;">
+  <div class="container">
+    <p class="section__label">Let's Talk</p>
+    <h1 class="section__heading" style="color: #fff;">Get in Touch.</h1>
+    <p class="section__sub">Fill out the form and I'll get back to you within one business day. No sales pitch — just a real conversation about what you need.</p>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="section section--light">
+  <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+    <div class="contact-form">
+      <!-- Replace ACTION with your Formspree endpoint before launch -->
+      <form action="https://formspree.io/f/YOUR_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="Jane Smith">
+          </div>
+          <div class="form-group">
+            <label for="business">Business Name</label>
+            <input type="text" id="business" name="business" placeholder="Smith Plumbing">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="jane@smithplumbing.com">
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone (optional)</label>
+            <input type="tel" id="phone" name="phone" placeholder="(303) 555-0100">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">What do you need?</label>
+          <textarea id="message" name="message" required placeholder="Tell me a little about your business and what you're looking for..."></textarea>
+        </div>
+        <button type="submit" class="btn btn--primary" style="width: 100%;">Send Message</button>
+      </form>
+    </div>
+    <div style="padding-top: 8px;">
+      <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 20px; color: var(--text-light);">What to expect</h3>
+      <ul style="list-style: none; display: flex; flex-direction: column; gap: 18px;">
+        <li style="font-size: 0.97rem; color: #444; line-height: 1.65; padding-left: 24px; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">1.</span>
+          I'll read your message and respond within one business day.
+        </li>
+        <li style="font-size: 0.97rem; color: #444; line-height: 1.65; padding-left: 24px; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">2.</span>
+          We'll have a quick call or exchange a few emails to understand what you need.
+        </li>
+        <li style="font-size: 0.97rem; color: #444; line-height: 1.65; padding-left: 24px; position: relative;">
+          <span style="position: absolute; left: 0; color: var(--accent); font-weight: 700;">3.</span>
+          I'll put together a proposal — no obligation.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="footer__copy">© 2026 Ridgeline Digital</span>
+    <nav class="footer__links">
+      <a href="services.html">Services</a>
+      <a href="articles/index.html">Articles</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
