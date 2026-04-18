@@ -412,11 +412,13 @@ body::after {
   font-size: 0.87rem; color: var(--muted-light);
   line-height: 1.72;
   overflow: hidden;
-  max-height: 5.2em;
-  transition: max-height 0.4s ease;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
 .article-card:hover .article-card__desc {
-  max-height: 20em;
+  display: block;
+  overflow: visible;
 }
 .article-card__link {
   display: inline-flex; align-items: center; gap: 6px;
