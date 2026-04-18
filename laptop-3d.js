@@ -38,7 +38,7 @@ function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
 
 // Spring overshoot: overshoots slightly then settles
 function springY(t) {
-  return 1 + Math.sin(t * Math.PI * 1.2) * Math.exp(-t * 4) * 0.15;
+  return t + Math.sin(t * Math.PI * 1.2) * Math.exp(-t * 4) * 0.15;
 }
 
 // ── Screen texture ────────────────────────────────────────
