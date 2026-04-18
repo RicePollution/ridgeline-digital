@@ -75,7 +75,7 @@
   <div class="container">
     <p class="section__label">Services</p>
     <h2 class="section__heading">What you get.</h2>
-    <div class="card-grid">
+    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr);">
       <div class="card">
         <div class="card__title">Custom Website</div>
         <p class="card__body">A hand-built, mobile-first site designed around your business. Not a template. Not a page builder. Something that actually looks like yours.</p>
@@ -89,6 +89,11 @@
       <div class="card">
         <div class="card__title">Monthly Care Plan</div>
         <p class="card__body">Keep your site current without lifting a finger. Updates, uptime monitoring, small edits, and priority support on a simple monthly plan.</p>
+        <a href="services.html" style="display: inline-block; margin-top: 20px; font-size: 0.88rem; font-weight: 600; color: var(--accent);">Learn more →</a>
+      </div>
+      <div class="card">
+        <div class="card__title">Google Business Setup</div>
+        <p class="card__body">Your Google Business Profile is often the first thing customers see. I'll set it up correctly — hours, photos, categories, and linked to your new site.</p>
         <a href="services.html" style="display: inline-block; margin-top: 20px; font-size: 0.88rem; font-weight: 600; color: var(--accent);">Learn more →</a>
       </div>
     </div>
@@ -121,34 +126,41 @@
 </section>
 
 <!-- ARTICLES TEASER -->
-<section class="section section--green">
+<section class="section section--light">
   <div class="container">
     <p class="section__label">For Business Owners</p>
-    <h2 class="section__heading">Worth reading before you decide anything.</h2>
-    <div class="card-grid" style="margin-top: 40px;">
-      <div class="article-card">
-        <div class="article-card__title">Your Website Is Your Hardest-Working Employee</div>
-        <p class="article-card__desc">It's on the clock 24/7, never calls in sick, and talks to potential customers while you're out on a job.</p>
+    <h2 class="section__heading" style="color: var(--text-light);">Worth reading before you decide anything.</h2>
+    <div class="card-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 40px;">
+      <div class="article-card" style="background: #fff; border-color: #e0ddd6;">
+        <div class="article-card__title" style="color: var(--text-light);">Your Website Is Your Hardest-Working Employee</div>
+        <p class="article-card__desc" style="color: #555;">It's on the clock 24/7, never calls in sick, and talks to potential customers while you're out on a job.</p>
         <a href="articles/your-website-is-your-hardest-working-employee.html" class="article-card__link">Read Article →</a>
       </div>
-      <div class="article-card">
-        <div class="article-card__title">5 Signs Your Business Website Is Turning Customers Away</div>
-        <p class="article-card__desc">Most business owners don't know what their website looks like on a phone. Here's what your customers are actually seeing.</p>
+      <div class="article-card" style="background: #fff; border-color: #e0ddd6;">
+        <div class="article-card__title" style="color: var(--text-light);">5 Signs Your Business Website Is Turning Customers Away</div>
+        <p class="article-card__desc" style="color: #555;">Most business owners don't know what their website looks like on a phone. Here's what your customers are actually seeing.</p>
         <a href="articles/5-signs-your-website-is-turning-customers-away.html" class="article-card__link">Read Article →</a>
       </div>
-      <div class="article-card">
-        <div class="article-card__title">What "SEO" Actually Means for a Small Business</div>
-        <p class="article-card__desc">You've been sold a lot of nonsense about SEO. Here's what it actually means if you run a local business in Colorado.</p>
+      <div class="article-card" style="background: #fff; border-color: #e0ddd6;">
+        <div class="article-card__title" style="color: var(--text-light);">What "SEO" Actually Means for a Small Business</div>
+        <p class="article-card__desc" style="color: #555;">You've been sold a lot of nonsense about SEO. Here's what it actually means if you run a local business in Colorado.</p>
         <a href="articles/what-seo-actually-means-for-a-small-business.html" class="article-card__link">Read Article →</a>
+      </div>
+      <div class="article-card" style="background: #fff; border-color: #e0ddd6;">
+        <div class="article-card__title" style="color: var(--text-light);">Do You Actually Need a Website If You're Already on Facebook?</div>
+        <p class="article-card__desc" style="color: #555;">A lot of small businesses run entirely through Facebook. Here's an honest look at when that's fine — and where it quietly starts costing you.</p>
+        <a href="articles/do-you-need-a-website-if-youre-already-on-facebook.html" class="article-card__link">Read Article →</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER CTA -->
-<div class="footer-cta">
-  <p class="footer-cta__headline">Ready to stop losing customers to competitors with better websites?</p>
-  <a href="contact.html" class="footer-cta__btn">Let's Talk</a>
+<div style="background: var(--bg-dark); border-top: 1px solid #2a2a2a; padding: 88px 24px; text-align: center;">
+  <p style="font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; color: #fff; max-width: 640px; margin: 0 auto 28px; line-height: 1.2; letter-spacing: -0.02em;">
+    Ready to stop losing customers to competitors with better websites?
+  </p>
+  <a href="contact.html" class="btn btn--primary" style="font-size: 1rem;">Let's Talk</a>
 </div>
 <footer class="footer">
   <div class="footer__inner">
