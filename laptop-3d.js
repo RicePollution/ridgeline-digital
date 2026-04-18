@@ -189,6 +189,13 @@ aboutVisual.addEventListener('mouseleave', () => {
   targetRotX = REST_X;
 });
 
+// ── Render loop pause when off-screen ─────────────────────
+let isVisible = false;
+const visibilityObserver = new IntersectionObserver((entries) => {
+  isVisible = entries[0].isIntersecting;
+}, { threshold: 0 });
+visibilityObserver.observe(canvas);
+
 // ── Resize handling ───────────────────────────────────────
 function resizeRenderer() {
   const w = canvas.clientWidth;
@@ -203,6 +210,7 @@ function resizeRenderer() {
 // ── Render loop ───────────────────────────────────────────
 function animate() {
   requestAnimationFrame(animate);
+  if (!isVisible && entranceDone) return;
   resizeRenderer();
 
   // Entrance animation
