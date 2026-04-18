@@ -83,6 +83,21 @@ const { group: laptopGroup, screenTex, screenCanvas } = buildLaptop();
 laptopGroup.rotation.y = THREE.MathUtils.degToRad(-10); // resting angle
 scene.add(laptopGroup);
 
+// ── Lighting ──────────────────────────────────────────────
+// Dim ambient fill
+const ambient = new THREE.AmbientLight(0xffffff, 0.4);
+scene.add(ambient);
+
+// Primary highlight — white, above-left
+const keyLight = new THREE.PointLight(0xffffff, 2.5, 20);
+keyLight.position.set(-3, 4, 4);
+scene.add(keyLight);
+
+// Screen spill — low-intensity green from front
+const screenLight = new THREE.PointLight(0x3dd68c, 0.6, 10);
+screenLight.position.set(0, 1, 3);
+scene.add(screenLight);
+
 // ── Resize handling ───────────────────────────────────────
 function resizeRenderer() {
   const w = canvas.clientWidth;
