@@ -143,6 +143,13 @@ import * as THREE from 'three';
       // Closed = +90deg (lid horizontal over keyboard). 110deg open = +90 - 110 = -20deg.
       lidPivot.rotation.x = -THREE.MathUtils.degToRad(20);
 
+      // Ground shadow — flat ellipse rendered in scene so it composites correctly
+      const shadowMat = new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.3 });
+      const shadowMesh = new THREE.Mesh(new THREE.CircleGeometry(1.6, 32), shadowMat);
+      shadowMesh.rotation.x = -Math.PI / 2;
+      shadowMesh.position.set(0, -0.2, 0.3);
+      group.add(shadowMesh);
+
       return { group, screenTex, screenCanvas };
     }
 

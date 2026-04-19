@@ -287,15 +287,6 @@ body::after {
   position: relative;
 }
 
-.about__visual::after {
-  content: '';
-  display: block;
-  width: 55%;
-  height: 16px;
-  background: radial-gradient(ellipse, rgba(0,0,0,0.35) 0%, transparent 70%);
-  margin: -4px auto 0;
-  pointer-events: none;
-}
 
 /* ─── SERVICES LIST ─── */
 .services-list {
@@ -525,24 +516,62 @@ body::after {
 .form-group textarea:focus { border-color: var(--accent); }
 .form-group textarea { resize: vertical; min-height: 130px; }
 
+/* ─── TWO-COL GRID (used in services, contact) ─── */
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .container  { padding: 0 20px; }
   .nav__inner { padding: 0 20px; }
-  .nav__links { gap: 20px; }
-  .nav__links a { font-size: 0.8rem; }
-  .hero { padding-bottom: 56px; }
-  .hero__bottom { grid-template-columns: 1fr; gap: 28px; }
+
+  /* Hide text nav links on mobile — keep logo + CTA only */
+  .nav__links a:not(.nav__cta) { display: none; }
+  .nav__links { gap: 0; }
+
+  /* Reduce section vertical whitespace for mobile */
+  .section { padding: 64px 0; }
+
+  /* Stack two-column layouts */
+  .two-col-grid { grid-template-columns: 1fr; gap: 40px; }
+
+  .hero { padding-bottom: 48px; }
+  .hero__headline { margin-bottom: 36px; }
+  .hero__bottom { grid-template-columns: 1fr; gap: 24px; }
+  .hero__sub { max-width: 100%; }
   .hero__ctas { justify-content: flex-start; }
-  .about-grid { grid-template-columns: 1fr; gap: 48px; }
-  .about__visual { padding: 8px 0 16px; }
+
+  /* Bigger touch targets on buttons */
+  .btn { padding: 14px 26px; min-height: 44px; }
+  .nav__cta { padding: 11px 20px; min-height: 44px; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 32px; }
+  /* Show laptop above the copy on mobile for visual impact */
+  .about__visual { order: -1; padding: 0 0 8px; }
   .about__visual canvas { height: 220px; }
-  .service-item { grid-template-columns: 40px 1fr; }
+
+  .service-item { grid-template-columns: 40px 1fr; gap: 0 20px; padding: 28px 0; }
   .service-item__arrow { display: none; }
+
   .process-grid { grid-template-columns: 1fr; }
   .process-step { border-right: none; border-bottom: 1px solid var(--border-light); }
   .process-step:last-child { border-bottom: none; }
+
   .articles-grid { grid-template-columns: 1fr; }
-  .cta-section { padding: 80px 20px; }
-  @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+
+  .cta-section { padding: 72px 20px; }
+}
+
+/* Extra-small phones (≤480px) */
+@media (max-width: 480px) {
+  /* Scale down hero headline so long words don't overflow */
+  .hero__headline { font-size: clamp(2.2rem, 9vw, 3.4rem); }
+  /* Slightly smaller section headings */
+  .section__heading { font-size: clamp(1.9rem, 7.5vw, 2.6rem); }
+  /* Form rows stack */
+  .form-row { grid-template-columns: 1fr; }
 }
