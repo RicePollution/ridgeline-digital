@@ -608,7 +608,7 @@ body.has-custom-cursor * { cursor: none !important; }
 .cursor-img {
   position: absolute;
   top: 0; left: 0;
-  width: 40px; height: auto;
+  width: 40px; max-width: none; height: auto;
   transition: opacity 0.18s ease, transform 0.18s ease;
   pointer-events: none;
   user-select: none;
