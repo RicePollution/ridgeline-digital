@@ -1,16 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="40" height="64" viewBox="0 0 40 64">
-  <!-- Modern macOS-style arrow cursor — smooth vector -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.67 56.16" width="37" height="57">
+  <!-- Windows 10 Aero arrow cursor — exact shape from Wikimedia Commons (CC0) -->
   <defs>
-    <filter id="cur-shadow" x="-20%" y="-10%" width="150%" height="140%">
-      <feDropShadow dx="1" dy="2" stdDeviation="1.5" flood-color="#000" flood-opacity="0.30"/>
+    <filter id="aero-shadow" x="-20%" y="-10%" width="160%" height="140%">
+      <feDropShadow dx="1.5" dy="2" stdDeviation="1.5" flood-color="#000" flood-opacity="0.35"/>
     </filter>
   </defs>
-  <!-- Main cursor shape: arrow pointing up-left with tail -->
-  <path d="M 3 3 L 3 44 L 12 35 L 18 50 L 24 47 L 18 32 L 33 32 Z"
-        fill="white"
-        stroke="#1a1a1a"
-        stroke-width="1.5"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        filter="url(#cur-shadow)"/>
+  <polygon
+    points="18.64 55.17 11.5 38.49 .75 49.08 .75 1.81 34.88 35.94 18.57 36.14 25.83 51.91 18.64 55.17"
+    fill="white"
+    stroke="#1a1a1a"
+    stroke-width="1.5"
+    stroke-linejoin="round"
+    stroke-miterlimit="10"
+    filter="url(#aero-shadow)"/>
 </svg>

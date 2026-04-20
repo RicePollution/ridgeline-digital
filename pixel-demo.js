@@ -1,27 +1,27 @@
 // pixel-demo.js
-// Uses cursor-old.svg (authentic Win95 pixel-art cursor) and
-// cursor-new.svg (smooth macOS-style cursor) as img elements.
+// Uses cursor-old.png (actual Windows 95 bitmap cursor) and
+// cursor-new.svg (actual Windows 10 Aero cursor shape) as img elements.
 
 function buildCursorEl() {
   const wrap = document.createElement('div');
-  wrap.style.cssText = 'position:relative;width:40px;height:64px;';
+  wrap.style.cssText = 'position:relative;width:48px;height:48px;';
 
   const pixelImg = document.createElement('img');
   pixelImg.id = 'cursor-pixel';
-  pixelImg.src = 'cursor-old.svg';
-  pixelImg.setAttribute('width', '40');
-  pixelImg.setAttribute('height', '64');
+  pixelImg.src = 'cursor-old.png';
+  pixelImg.setAttribute('width', '48');
+  pixelImg.setAttribute('height', '48');
   pixelImg.setAttribute('alt', '');
-  // image-rendering:pixelated keeps the bitmap sharp when CSS scales it up
-  pixelImg.style.cssText = 'position:absolute;inset:0;image-rendering:pixelated;';
+  // image-rendering:pixelated keeps the bitmap crisp at display size
+  pixelImg.style.cssText = 'position:absolute;inset:0;image-rendering:pixelated;width:48px;height:48px;max-width:none;';
 
   const smoothImg = document.createElement('img');
   smoothImg.id = 'cursor-smooth';
   smoothImg.src = 'cursor-new.svg';
-  smoothImg.setAttribute('width', '40');
-  smoothImg.setAttribute('height', '64');
+  smoothImg.setAttribute('width', '37');
+  smoothImg.setAttribute('height', '57');
   smoothImg.setAttribute('alt', '');
-  smoothImg.style.cssText = 'position:absolute;inset:0;opacity:0;transition:opacity 0.55s ease;';
+  smoothImg.style.cssText = 'position:absolute;inset:0;opacity:0;transition:opacity 0.55s ease;max-width:none;';
 
   wrap.appendChild(pixelImg);
   wrap.appendChild(smoothImg);
