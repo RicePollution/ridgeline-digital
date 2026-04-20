@@ -550,6 +550,27 @@ body::after {
   align-items: start;
 }
 
+/* ─── PIXEL DEMO SECTION ─── */
+.pixel-demo { padding-bottom: 80px; }
+
+.pixel-demo__text { margin-bottom: 52px; }
+
+.pixel-demo__stage {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  height: 340px;
+}
+
+.site-preview {
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.55);
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .container  { padding: 0 20px; }
