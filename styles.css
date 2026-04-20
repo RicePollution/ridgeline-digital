@@ -592,6 +592,50 @@ body::after {
   .cta-section { padding: 72px 20px; }
 }
 
+/* ─── CUSTOM CURSOR ─── */
+body.has-custom-cursor,
+body.has-custom-cursor * { cursor: none !important; }
+
+#cursor-wrap {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  z-index: 99999;
+  width: 0; height: 0;
+  will-change: transform;
+}
+
+.cursor-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 40px; height: auto;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.cursor-img--old {
+  opacity: 1;
+  transform: scale(1);
+  image-rendering: pixelated;
+}
+
+.cursor-img--new {
+  opacity: 0;
+  transform: scale(0.75) rotate(-6deg);
+}
+
+#cursor-wrap.cursor--modern .cursor-img--old {
+  opacity: 0;
+  transform: scale(0.75) rotate(6deg);
+}
+
+#cursor-wrap.cursor--modern .cursor-img--new {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
 /* Extra-small phones (≤480px) */
 @media (max-width: 480px) {
   /* Scale down hero headline so long words don't overflow */
