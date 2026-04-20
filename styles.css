@@ -442,6 +442,32 @@ body::after {
 }
 .cta-section__heading em { font-style: normal; color: var(--accent); }
 
+/* ─── FOOTER CTA ─── */
+.footer-cta {
+  background: var(--accent);
+  padding: 64px 40px;
+  text-align: center;
+}
+.footer-cta__headline {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+  font-weight: 800;
+  color: #0d0d0d;
+  max-width: 680px;
+  margin: 0 auto 32px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.footer-cta__btn {
+  display: inline-flex; align-items: center;
+  background: #0d0d0d; color: #fff;
+  font-size: 0.9rem; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 14px 36px; border-radius: 3px;
+  transition: opacity 0.15s;
+}
+.footer-cta__btn:hover { opacity: 0.8; }
+
 /* ─── FOOTER ─── */
 .footer {
   background: var(--bg); padding: 28px 0;
