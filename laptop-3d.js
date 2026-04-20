@@ -174,9 +174,14 @@ import * as THREE from 'three';
     laptopGroup.rotation.y = THREE.MathUtils.degToRad(35);
 
     // ── Entrance trigger ──────────────────────────────────────
+    // Only fire after the user has scrolled — prevents triggering on initial page load
+    // if the about section happens to be in the viewport already.
+    let hasScrolled = false;
+    window.addEventListener('scroll', () => { hasScrolled = true; }, { once: true, passive: true });
+
     const entranceObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting && !entranceTriggered) {
+        if (entry.isIntersecting && !entranceTriggered && hasScrolled) {
           entranceTriggered = true;
           entranceStart = performance.now();
           lastFrameTime = performance.now();
