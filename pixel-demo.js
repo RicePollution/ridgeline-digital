@@ -3,25 +3,23 @@
 // cursor-new.svg (actual Windows 10 Aero cursor shape) as img elements.
 
 function buildCursorEl() {
+  // Both cursors display at 32px wide — real OS cursor size
   const wrap = document.createElement('div');
-  wrap.style.cssText = 'position:relative;width:48px;height:48px;';
+  wrap.style.cssText = 'position:relative;width:32px;height:50px;';
 
   const pixelImg = document.createElement('img');
   pixelImg.id = 'cursor-pixel';
   pixelImg.src = 'cursor-old.png';
-  pixelImg.setAttribute('width', '48');
-  pixelImg.setAttribute('height', '48');
   pixelImg.setAttribute('alt', '');
-  // image-rendering:pixelated keeps the bitmap crisp at display size
-  pixelImg.style.cssText = 'position:absolute;inset:0;image-rendering:pixelated;width:48px;height:48px;max-width:none;';
+  // image-rendering:pixelated keeps the bitmap crisp (no blur when scaled)
+  pixelImg.style.cssText = 'position:absolute;top:0;left:0;width:32px;height:32px;image-rendering:pixelated;max-width:none;';
 
   const smoothImg = document.createElement('img');
   smoothImg.id = 'cursor-smooth';
   smoothImg.src = 'cursor-new.svg';
-  smoothImg.setAttribute('width', '37');
-  smoothImg.setAttribute('height', '57');
   smoothImg.setAttribute('alt', '');
-  smoothImg.style.cssText = 'position:absolute;inset:0;opacity:0;transition:opacity 0.55s ease;max-width:none;';
+  // Win10 Aero viewBox is ~36.67×56.16 — at 32px wide that's ~49px tall
+  smoothImg.style.cssText = 'position:absolute;top:0;left:0;width:32px;height:auto;opacity:0;transition:opacity 0.55s ease;max-width:none;';
 
   wrap.appendChild(pixelImg);
   wrap.appendChild(smoothImg);
