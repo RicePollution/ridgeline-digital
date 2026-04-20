@@ -1,100 +1,68 @@
 // pixel-demo.js
-const PIXEL_MAP = [
-  'b         ',
-  'bb        ',
-  'bwb       ',
-  'bwwb      ',
-  'bwwwb     ',
-  'bwwwwb    ',
-  'bwwwwwb   ',
-  'bwwwwwwb  ',
-  'bwwwwwwwb ',
-  'bwwwwwwwwb',
-  'bbbbbbbbbb',
-];
+// Uses cursor-old.svg (authentic Win95 pixel-art cursor) and
+// cursor-new.svg (smooth macOS-style cursor) as img elements.
 
-const PX = 5;
-const SVG_NS = 'http://www.w3.org/2000/svg';
+function buildCursorEl() {
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'position:relative;width:40px;height:64px;';
 
-function makeEl(tag, attrs) {
-  const el = document.createElementNS(SVG_NS, tag);
-  for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
-  return el;
-}
+  const pixelImg = document.createElement('img');
+  pixelImg.id = 'cursor-pixel';
+  pixelImg.src = 'cursor-old.svg';
+  pixelImg.setAttribute('width', '40');
+  pixelImg.setAttribute('height', '64');
+  pixelImg.setAttribute('alt', '');
+  // image-rendering:pixelated keeps the bitmap sharp when CSS scales it up
+  pixelImg.style.cssText = 'position:absolute;inset:0;image-rendering:pixelated;';
 
-function buildCursorSVG() {
-  const cols = PIXEL_MAP[0].length;
-  const rows = PIXEL_MAP.length;
-  const svg = makeEl('svg', {
-    width: cols * PX,
-    height: rows * PX,
-    viewBox: '0 0 ' + (cols * PX) + ' ' + (rows * PX),
-    'shape-rendering': 'crispEdges',
-  });
+  const smoothImg = document.createElement('img');
+  smoothImg.id = 'cursor-smooth';
+  smoothImg.src = 'cursor-new.svg';
+  smoothImg.setAttribute('width', '40');
+  smoothImg.setAttribute('height', '64');
+  smoothImg.setAttribute('alt', '');
+  smoothImg.style.cssText = 'position:absolute;inset:0;opacity:0;transition:opacity 0.55s ease;';
 
-  const pixelG = makeEl('g', { id: 'cursor-pixel' });
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      const ch = PIXEL_MAP[r][c];
-      if (ch !== 'b' && ch !== 'w') continue;
-      pixelG.appendChild(makeEl('rect', {
-        x: c * PX, y: r * PX, width: PX, height: PX,
-        fill: ch === 'b' ? '#000' : '#fff',
-      }));
-    }
-  }
-  svg.appendChild(pixelG);
-
-  const smoothG = makeEl('g', { id: 'cursor-smooth', opacity: '0' });
-  const path = makeEl('path', {
-    d: 'M2 2 L2 46 L14 35 L21 52 L30 48 L23 31 L44 31 Z',
-    fill: 'white',
-    stroke: '#111',
-    'stroke-width': '2.5',
-    'stroke-linejoin': 'round',
-    'stroke-linecap': 'round',
-  });
-  smoothG.appendChild(path);
-  svg.appendChild(smoothG);
-
-  return svg;
+  wrap.appendChild(pixelImg);
+  wrap.appendChild(smoothImg);
+  return wrap;
 }
 
 function runAnimation(cursor, oldSite, newSite) {
-  // 400ms: cursor slides in from left
-  setTimeout(() => cursor.classList.add('is-entering'), 400);
+  // 600ms: cursor slides in from left
+  setTimeout(() => cursor.classList.add('is-entering'), 600);
 
-  // 1100ms: nudge cursor down toward old site
+  // 1800ms: nudge cursor down toward old site
   setTimeout(() => {
     cursor.style.top = '52%';
     cursor.style.left = '42%';
-  }, 1100);
+  }, 1800);
 
-  // 1400ms: click pulse
-  setTimeout(() => cursor.classList.add('is-clicking'), 1400);
+  // 2300ms: click pulse
+  setTimeout(() => cursor.classList.add('is-clicking'), 2300);
 
-  // 1550ms: remove click, start glitch on old site
+  // 2500ms: remove click, start glitch on old site
   setTimeout(() => {
     cursor.classList.remove('is-clicking');
     oldSite.style.filter = 'saturate(5) contrast(3) hue-rotate(80deg)';
-    oldSite.style.transition = 'filter 0.15s ease, opacity 0.4s ease 0.15s';
-  }, 1550);
+    oldSite.style.transition = 'filter 0.2s ease, opacity 0.5s ease 0.2s';
+  }, 2500);
 
-  // 1700ms: swap previews
+  // 2750ms: swap previews
   setTimeout(() => {
     oldSite.style.opacity = '0';
     newSite.style.opacity = '1';
-  }, 1700);
+  }, 2750);
 
-  // 1900ms: cursor morphs to smooth
-  setTimeout(() => cursor.classList.add('is-modern'), 1900);
+  // 3200ms: cursor morphs to smooth
+  setTimeout(() => cursor.classList.add('is-modern'), 3200);
 
-  // 2400ms: cursor exits
+  // 4400ms: cursor exits — clear inline position first so is-gone CSS can drive the transition
   setTimeout(() => {
     cursor.style.top = '';
     cursor.style.left = '';
     cursor.classList.add('is-gone');
-  }, 2400);
+  }, 4400);
 }
 
 function skipToFinal(oldSite, newSite) {
@@ -105,7 +73,7 @@ function skipToFinal(oldSite, newSite) {
 function init() {
   const cursorEl = document.getElementById('pixelCursor');
   if (!cursorEl) return;
-  cursorEl.appendChild(buildCursorSVG());
+  cursorEl.appendChild(buildCursorEl());
 
   const section = document.querySelector('.pixel-demo');
   const oldSite = document.querySelector('.site-preview--old');
