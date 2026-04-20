@@ -892,16 +892,6 @@ body::after {
   .cta-section { padding: 72px 20px; }
 }
 
-/* Extra-small phones (≤480px) */
-@media (max-width: 480px) {
-  /* Scale down hero headline so long words don't overflow */
-  .hero__headline { font-size: clamp(2.2rem, 9vw, 3.4rem); }
-  /* Slightly smaller section headings */
-  .section__heading { font-size: clamp(1.9rem, 7.5vw, 2.6rem); }
-  /* Form rows stack */
-  .form-row { grid-template-columns: 1fr; }
-}
-
 @media (max-width: 640px) {
   .pixel-demo__stage { height: 280px; }
   .sp-old__header { font-size: 13px; }
@@ -910,4 +900,14 @@ body::after {
   .pixel-cursor.is-entering { transform: rotate(-6deg) scale(0.75); }
   .pixel-cursor.is-clicking { transform: rotate(-6deg) scale(0.65); }
   .pixel-cursor.is-modern  { transform: rotate(0deg) scale(0.75); }
+}
+
+/* Extra-small phones (≤480px) */
+@media (max-width: 480px) {
+  /* Scale down hero headline so long words don't overflow */
+  .hero__headline { font-size: clamp(2.2rem, 9vw, 3.4rem); }
+  /* Slightly smaller section headings */
+  .section__heading { font-size: clamp(1.9rem, 7.5vw, 2.6rem); }
+  /* Form rows stack */
+  .form-row { grid-template-columns: 1fr; }
 }
