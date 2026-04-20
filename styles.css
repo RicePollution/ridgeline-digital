@@ -799,6 +799,56 @@ body::after {
   align-self: flex-start;
 }
 
+/* --- Pixel cursor actor --- */
+.pixel-cursor {
+  position: absolute;
+  top: 30%;
+  left: -80px;
+  opacity: 0;
+  transform: rotate(-12deg);
+  pointer-events: none;
+  z-index: 10;
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.5s ease,
+    left 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, left, top;
+}
+
+.pixel-cursor.is-entering {
+  left: 38%;
+  top: 18%;
+  opacity: 1;
+  transform: rotate(-6deg);
+}
+
+.pixel-cursor.is-clicking {
+  transform: rotate(-6deg) scale(0.82);
+  transition: transform 0.12s ease;
+}
+
+.pixel-cursor.is-modern #cursor-pixel { display: none; }
+.pixel-cursor.is-modern #cursor-smooth { opacity: 1 !important; }
+.pixel-cursor.is-modern {
+  transform: rotate(0deg);
+  transition:
+    transform 0.4s ease,
+    opacity 0.5s ease,
+    left 0.5s ease,
+    top 0.5s ease;
+}
+
+.pixel-cursor.is-gone {
+  left: 110%;
+  top: -10%;
+  opacity: 0;
+  transition:
+    left 0.55s cubic-bezier(0.55, 0, 1, 0.45),
+    top 0.55s cubic-bezier(0.55, 0, 1, 0.45),
+    opacity 0.4s ease 0.2s;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .container  { padding: 0 20px; }
