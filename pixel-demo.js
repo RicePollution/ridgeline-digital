@@ -12,7 +12,7 @@ function buildCursorEl() {
   pixelImg.id = 'cursor-pixel';
   pixelImg.src = 'cursor-old.png';
   pixelImg.setAttribute('alt', '');
-  pixelImg.style.cssText = `position:absolute;top:0;left:0;width:${SZ};height:${SZ};object-fit:contain;object-position:top left;image-rendering:pixelated;max-width:none;`;
+  pixelImg.style.cssText = `position:absolute;top:0;left:0;width:${SZ};height:${SZ};object-fit:contain;object-position:top left;image-rendering:pixelated;max-width:none;transition:opacity 0.55s ease;`;
 
   const smoothImg = document.createElement('img');
   smoothImg.id = 'cursor-smooth';
@@ -67,6 +67,17 @@ function skipToFinal(oldSite, newSite) {
   newSite.style.opacity = '1';
 }
 
+function resetAnimation(cursor, oldSite, newSite) {
+  // Strip all animation classes and inline overrides so it can replay cleanly
+  cursor.className = 'pixel-cursor';
+  cursor.style.top = '';
+  cursor.style.left = '';
+  oldSite.style.filter = '';
+  oldSite.style.transition = '';
+  oldSite.style.opacity = '';
+  newSite.style.opacity = '';
+}
+
 function init() {
   const cursorEl = document.getElementById('pixelCursor');
   if (!cursorEl) return;
@@ -82,14 +93,24 @@ function init() {
     return;
   }
 
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      observer.disconnect();
-      runAnimation(cursorEl, oldSite, newSite);
-    }
-  }, { threshold: 0.3 });
+  function play() {
+    resetAnimation(cursorEl, oldSite, newSite);
+    runAnimation(cursorEl, oldSite, newSite);
+    // Re-attach observer after animation finishes (is-gone exits at ~5600ms)
+    setTimeout(attach, 6200);
+  }
 
-  observer.observe(section);
+  function attach() {
+    const obs = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        obs.disconnect();
+        play();
+      }
+    }, { threshold: 0.3 });
+    obs.observe(section);
+  }
+
+  attach();
 }
 
 init();

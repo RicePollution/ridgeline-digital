@@ -836,8 +836,8 @@ body::after {
     left 0.5s ease,
     top 0.5s ease;
 }
-/* !important required: SVG presentation attribute opacity="0" outranks class styles */
-.pixel-cursor.is-modern #cursor-pixel { display: none; }
+/* Cross-fade: Win95 fades out as Win10 fades in simultaneously */
+.pixel-cursor.is-modern #cursor-pixel { opacity: 0 !important; }
 .pixel-cursor.is-modern #cursor-smooth { opacity: 1 !important; }
 
 .pixel-cursor.is-gone {
