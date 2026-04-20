@@ -571,6 +571,128 @@ body::after {
   box-shadow: 0 24px 60px rgba(0,0,0,0.55);
 }
 
+/* --- Site preview base --- */
+.site-preview--old,
+.site-preview--new {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  transition: opacity 0.4s ease;
+}
+
+.site-preview--new { opacity: 0; }
+
+/* --- Old site --- */
+.sp-old__chrome {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 10px;
+  background: #c0c0c0;
+  border-bottom: 2px solid #808080;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  color: #000;
+}
+.sp-old__chrome-dot {
+  display: inline-block;
+  width: 10px; height: 10px;
+  background: #a0a0a0;
+  border: 2px solid;
+  border-color: #dfdfdf #808080 #808080 #dfdfdf;
+}
+.sp-old__url {
+  margin-left: 4px;
+  flex: 1;
+  background: #fff;
+  border: 1px solid #808080;
+  padding: 1px 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 9px;
+}
+
+.sp-old__body {
+  flex: 1;
+  background: #c0c0c0;
+  padding: 10px 12px;
+  overflow: hidden;
+  font-family: 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+}
+
+.sp-old__header {
+  font-size: 17px;
+  font-weight: bold;
+  color: #00008b;
+  text-align: center;
+  text-shadow: 2px 2px #ff0, -1px -1px #f00;
+  margin-bottom: 4px;
+}
+
+.sp-old__marquee-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #000080;
+  color: #ffff00;
+  font-size: 9px;
+  padding: 2px 0;
+}
+.sp-old__marquee-text {
+  display: inline-block;
+  animation: sp-marquee 12s linear infinite;
+}
+@keyframes sp-marquee {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(-100%); }
+}
+
+.sp-old__rainbow-hr {
+  height: 4px;
+  margin: 6px 0;
+  background: linear-gradient(to right,
+    red, orange, yellow, green, blue, indigo, violet);
+}
+
+.sp-old__welcome {
+  font-size: 10px;
+  color: #000;
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+.sp-old__btn {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+  background: #c0c0c0;
+  color: #000;
+  border: 2px solid;
+  border-color: #fff #808080 #808080 #fff;
+  padding: 3px 8px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.sp-old__blink {
+  font-size: 10px;
+  font-weight: bold;
+  color: #ff0000;
+  text-align: center;
+  animation: sp-blink 0.9s step-start infinite;
+}
+@keyframes sp-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.sp-old__counter {
+  font-size: 9px;
+  color: #444;
+  text-align: right;
+  margin-top: 6px;
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 768px) {
   .container  { padding: 0 20px; }
