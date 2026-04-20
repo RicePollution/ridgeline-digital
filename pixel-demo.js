@@ -47,7 +47,7 @@ function buildCursorSVG() {
 
   const smoothG = makeEl('g', { id: 'cursor-smooth', opacity: '0' });
   const path = makeEl('path', {
-    d: 'M2 2 L2 36 L11 27 L17 42 L23 39 L17 24 L28 24 Z',
+    d: 'M2 2 L2 46 L14 35 L21 52 L30 48 L23 31 L44 31 Z',
     fill: 'white',
     stroke: '#111',
     'stroke-width': '2.5',

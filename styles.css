@@ -828,8 +828,6 @@ body::after {
   transition: transform 0.12s ease;
 }
 
-.pixel-cursor.is-modern #cursor-pixel { display: none; }
-.pixel-cursor.is-modern #cursor-smooth { opacity: 1 !important; }
 .pixel-cursor.is-modern {
   transform: rotate(0deg);
   transition:
@@ -838,6 +836,9 @@ body::after {
     left 0.5s ease,
     top 0.5s ease;
 }
+/* !important required: SVG presentation attribute opacity="0" outranks class styles */
+.pixel-cursor.is-modern #cursor-pixel { display: none; }
+.pixel-cursor.is-modern #cursor-smooth { opacity: 1 !important; }
 
 .pixel-cursor.is-gone {
   left: 110%;
