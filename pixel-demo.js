@@ -90,7 +90,11 @@ function runAnimation(cursor, oldSite, newSite) {
   setTimeout(() => cursor.classList.add('is-modern'), 1900);
 
   // 2400ms: cursor exits
-  setTimeout(() => cursor.classList.add('is-gone'), 2400);
+  setTimeout(() => {
+    cursor.style.top = '';
+    cursor.style.left = '';
+    cursor.classList.add('is-gone');
+  }, 2400);
 }
 
 function skipToFinal(oldSite, newSite) {
